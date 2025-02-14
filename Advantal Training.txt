@@ -1,0 +1,382 @@
+WEEK 1
+
+1. Introduction to Java :------------------------------------------------------------------------------------------------------------------------------------------
+Java is a high-level, object-oriented programming language known for its platform independence,
+meaning Java programs can run on different devices using the Java Virtual Machine (JVM).
+
+A) Data Types in Java:---------
+Data types define the type of value a variable can hold. Java has two categories of data types:
+1) Primitive Data Types:-
+byte	1 byte
+short	2 byte
+char    2 byte
+int	4 byte
+float	4 byte
+double	8 byte
+long    8 byte
+boolean 1 bit
+
+2)Non-Primitive Data Types:-
+String
+Array
+Class
+Object
+
+Example:-
+int integerNumber = 123456789;
+float floatNumber = 3.14f; 
+double doubleNumber = 99.9999; 
+char singleCharacter = 'A';
+boolean isJavaFun = true;  
+
+String message = "Hello, Java!"; 
+int[] numbersArray = {1, 2, 3, 4, 5}; 
+
+B) Conditional Statements:-----------------------------
+1)if condition:-
+ int num=4;
+ if (num > 0) {
+            System.out.println(num + " is a positive number.");
+        }
+
+2)if-else condition:-
+int num=5;
+if (num % 2 == 0) {
+            System.out.println(num + " is an even number.");
+        } else {
+            System.out.println(num + " is an odd number.");
+        }
+
+3)else-if ladder:-
+int marks=8;
+if (marks >= 90) {
+            System.out.println("Grade: A");
+        } else if (marks >= 75) {
+            System.out.println("Grade: B");
+        } else if (marks >= 50) {
+            System.out.println("Grade: C");
+        } else {
+            System.out.println("Grade: F (Fail)");
+        }
+4)switch:-
+         int day = 5;
+         switch (day) {
+            case 1:
+                System.out.println("Monday");
+                break;
+            case 2:
+                System.out.println("Tuesday");
+                break;
+            case 3:
+                System.out.println("Wednesday");
+                break;
+            case 4:
+                System.out.println("Thursday");
+                break;
+            case 5:
+                System.out.println("Friday");
+                break;
+            case 6:
+                System.out.println("Saturday");
+                break;
+            case 7:
+                System.out.println("Sunday");
+                break;
+            default:
+                System.out.println("Invalid day number! Please enter between 1 and 7.");
+        }
+
+C) Loop's:-----------------------------------
+1)for loop:-
+String name="Hello Advantal";
+for(int i=0;i<=5;i++){
+     Sysyem.out.println(name)
+}
+
+2)While Loop:-(checks the condition first then execute)
+int i = 1;
+while(i <= 5) {
+    System.out.println("Java is fun!");
+    i++;
+}
+
+3)Do-While Loop:-(it executes atleast one time)
+int i = 1;
+do {
+    System.out.println("Executed at least once!");
+    i++;
+} while(i <= 5);
+
+
+2. Object-Oriented Programming(OOP) Concepts in Java:-------------------------------------------------------------------------------------------------------------
+Java is an object-oriented programming (OOP) language, meaning it is based on objects and classes. 
+The four pillars of OOP are:-
+1)Encapsulation:- Encapsulation means hiding the data (variables) inside a class and allowing access only through getter and setter methods.
+
+class BankAccount {
+    private double balance;  // Private variable (data hiding)
+
+    // Constructor
+    public BankAccount(double balance) {
+        this.balance = balance;
+    }
+
+    // Getter method
+    public double getBalance() {
+        return balance;
+    }
+
+    // Setter method
+    public void setBalance(double balance) {
+        if (balance >= 0) {
+            this.balance = balance;
+        } else {
+            System.out.println("Balance cannot be negative.");
+        }
+    }
+}
+
+public class EncapsulationExample {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount(5000);
+        System.out.println("Initial Balance: " + account.getBalance());
+
+        account.setBalance(7000);
+        System.out.println("Updated Balance: " + account.getBalance());
+    }
+}
+
+
+2)Inheritance (Reusability):- Inheritance allows a child class to inherit the properties and methods of a parent class.
+
+class Animal{
+    void eat() {
+        System.out.println("This animal eats food.");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog barks.");
+    }
+}
+
+public class InheritanceExample {
+    public static void main(String[] args) {
+        Dog myDog = new Dog();
+        myDog.eat(); 
+        myDog.bark(); 
+    }
+}
+
+
+3)Polymorphism (Method Overriding & Overloading):- Polymorphism allows one method to perform different tasks based on the object type.
+
+----Method Overloading (Same method name, different parameters):-
+
+class MathOperations {
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+}
+
+public class OverloadingExample {
+    public static void main(String[] args) {
+        MathOperations math = new MathOperations();
+        System.out.println("Sum (2 numbers): " + math.add(10, 20));
+        System.out.println("Sum (3 numbers): " + math.add(10, 20, 30));
+    }
+}
+
+
+----Method Overriding (Same method name in parent & child class):-
+
+class Vehicle {
+    void run() {
+        System.out.println("Vehicle is running.");
+    }
+}
+
+class Car extends Vehicle {
+    @Override
+    void run() {
+        System.out.println("Car is running at 100 km/hr.");
+    }
+}
+
+public class OverridingExample {
+    public static void main(String[] args) {
+        Vehicle myCar = new Car();
+        myCar.run();  // Calls overridden method in Car class
+    }
+}
+
+4. Abstraction (Hiding Implementation):-Abstraction means hiding implementation details and showing only essential features.
+----Not able to create object
+----Abstract method must be implemented in child classes.
+
+abstract class Shape {
+    abstract void draw();
+
+    void display() {
+        System.out.println("Shapes can be drawn.");
+    }
+}
+
+class Circle extends Shape {
+    void draw() {
+        System.out.println("Drawing a Circle.");
+    }
+}
+
+public class AbstractionExample {
+    public static void main(String[] args) {
+        Shape myShape = new Circle();
+        myShape.draw();   
+        myShape.display();  
+    }
+}
+
+5. Interfaces (100% Abstraction):- An interface is like a blueprint that contains only method declarations (without implementation).
+//Interface methods are always abstract (no implementation).
+//A class must implement all methods of an interface.
+//One class can implement multiple interfaces (unlike inheritance).
+
+interface Animal {
+    void makeSound(); // Abstract method
+}
+
+class Cat implements Animal {
+    public void makeSound() {
+        System.out.println("Cat meows.");
+    }
+}
+
+public class InterfaceExample {
+    public static void main(String[] args) {
+        Animal myCat = new Cat();
+        myCat.makeSound();
+    }
+}
+
+
+---- keywords in oops:-
+(1) new:- // Used to create objects dynamically.
+             Car car1 = new Car();
+
+(2) this:- // Refers to the current object.
+           // Used to differentiate instance variables from local variables.
+
+           
+class Car {
+    String brand;
+    
+    Car(String brand) {
+        this.brand = brand;  // 'this' refers to the instance variable
+    }
+
+    void display() {
+        System.out.println("Brand: " + this.brand);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car myCar = new Car("Tesla");
+        myCar.display();
+    }
+}
+
+(3)  static :- // Associated with class not with object.
+               //Can be accessed without creating an object.
+class MathUtils {
+    static int square(int x) {
+        return x * x;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(MathUtils.square(5));  // No object needed
+    }
+}
+
+(4)final :- //Prevents modification (used with variables, methods, and classes).
+            //Final Variable → Cannot be changed.
+           //Final Method → Cannot be overridden.
+           //Final Class → Cannot be inherited.
+
+final class Animal {
+    final int age = 10;
+
+    final void makeSound() {
+        System.out.println("Animal Sound");
+    }
+}
+
+// class Dog extends Animal {     ERROR: Cannot inherit from final class
+//     void makeSound() {}         ERROR: Cannot override final method
+// }
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a = new Animal();
+        // a.age = 20;            ERROR: Cannot modify final variable
+    }
+}
+
+
+(5) extends :- Implements inheritance (one class acquires properties of another).
+class Animal {
+    void eat() {
+        System.out.println("I can eat");
+    }
+}
+
+class Dog extends Animal {  // Dog inherits Animal
+    void bark() {
+        System.out.println("I can bark");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.eat();  // Inherited method
+        d.bark();
+    }
+}
+
+(6) super:- //Refers to the parent class (superclass).
+            //Used to call parent class methods and constructors.
+
+class Animal {
+    Animal() {
+        System.out.println("Animal Constructor");
+    }
+}
+
+class Dog extends Animal {
+    Dog() {
+        super();  // Calls Animal constructor
+        System.out.println("Dog Constructor");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+    }
+}
+
+
+
+
+
+
+
+
