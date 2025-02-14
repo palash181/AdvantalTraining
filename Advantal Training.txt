@@ -4,7 +4,7 @@ WEEK 1
 Java is a high-level, object-oriented programming language known for its platform independence,
 meaning Java programs can run on different devices using the Java Virtual Machine (JVM).
 
-A) Data Types in Java:---------
+A) Data Types in Java:----------------
 Data types define the type of value a variable can hold. Java has two categories of data types:
 1) Primitive Data Types:-
 byte	1 byte
